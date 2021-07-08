@@ -4,9 +4,13 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 ---
-url:
+url_1:
   type: SYSTEM_URL
   valueOf: $url
+
+url_2:
+  type: STRING
+  valueOf: $urlSubstitute
 
 valueString:
   type: STRING
