@@ -14,6 +14,9 @@
 # birthTime
 - id: "birthTime"
   url: "http://hl7.org/fhir/StructureDefinition/patient-birthTime"
+ #race 
+- id: "race"
+  url: "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"   
 # religion
 - id: "religion"
   url: "http://hl7.org/fhir/StructureDefinition/patient-religion"

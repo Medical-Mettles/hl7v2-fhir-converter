@@ -96,3 +96,12 @@ extension_2:
   vars:
     url: String, GeneralUtils.getExtensionUrl("religion")
     valCodeableConcept: RELIGIOUS_AFFILIATION_CC, PID.17
+
+extension_3:
+#   condition: $valCodeableConcept3 NOT_NULL
+  valueOf: extension/Extension_USCoreRace
+  generateList: true
+  expressionType: resource
+  vars:
+    urlRace: String, GeneralUtils.getExtensionUrl("race")
+    valCodeableConceptRace: RACE_CATEGORIES_CC, PID.10            

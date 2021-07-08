@@ -1,0 +1,42 @@
+#
+# (C) Copyright IBM Corp. 2021
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+---
+url:
+  type: SYSTEM_URL
+  valueOf: $urlRace
+
+# extension_1:
+#   generateList: true
+#   valueOf: extension/Extension_Coding
+#   expressionType: resource
+#   vars:
+#     # valCodeableConceptRace: $valCodeableConceptRace
+#     system: String, GeneralUtils.getCodeableConceptSystem(valCodeableConceptRace)
+#     code: String, GeneralUtils.getCodeableConceptCode(valCodeableConceptRace)
+#     display: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConceptRace)
+#   constants:
+#     urlSubstitute: 'ombCategory'
+
+extension_1:
+  valueOf: extension/Extension_Coding
+  expressionType: resource
+  vars:
+    # valCodeableConceptRace: $valCodeableConceptRace
+    system: String, GeneralUtils.getCodeableConceptSystem(valCodeableConceptRace)
+    code: String, GeneralUtils.getCodeableConceptCode(valCodeableConceptRace)
+    display: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConceptRace)
+  constants: 
+    urlSubstitute: 'ombCategory'
+    
+extension_2:
+  generateList: true
+  valueOf: extension/Extension
+  expressionType: resource
+  vars:
+    valString: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConceptRace)  
+  constants:
+    # valString: "text valString"
+    urlSubstitute: 'text'

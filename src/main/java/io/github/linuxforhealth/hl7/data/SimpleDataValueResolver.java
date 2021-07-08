@@ -31,6 +31,8 @@ import org.hl7.fhir.r4.model.codesystems.ConditionCategory;
 import org.hl7.fhir.r4.model.codesystems.MessageReasonEncounter;
 import org.hl7.fhir.r4.model.codesystems.NameUse;
 import org.hl7.fhir.r4.model.codesystems.V3ReligiousAffiliation;
+import org.hl7.fhir.r4.model.codesystems.V3Race;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -147,6 +149,22 @@ public class SimpleDataValueResolver {
             return null;
         }
     };
+
+    public static final ValueExtractor<Object, CodeableConcept> RACE_CATEGORIES_FHIR_CC =
+    (Object value) -> {
+      String val = Hl7DataHandlerUtil.getStringValue(value);
+      String code = getFHIRCode(val, V3Race.class);
+
+      if (code != null) {
+        V3Race race = V3Race.fromCode(code);
+        CodeableConcept codeableConcept = new CodeableConcept( );
+        codeableConcept.addCoding(new Coding(race.getSystem(), code, race.getDisplay() ));
+        codeableConcept.setText(race.getDisplay());
+        return codeableConcept;
+      } else {
+        return null;
+      }
+    };  
 
     public static final ValueExtractor<Object, String> IMMUNIZATION_STATUS_CODES = (Object value) -> {
         String val = Hl7DataHandlerUtil.getStringValue(value);

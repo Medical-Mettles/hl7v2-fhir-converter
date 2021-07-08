@@ -1,0 +1,23 @@
+@@ -0,0 +1,27 @@
+#
+# (C) Copyright IBM Corp. 2021
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+---
+url:
+  type: STRING
+  valueOf: $urlSubstitute
+
+valueCoding:
+  generateList: true
+  valueOf: datatype/Coding
+  expressionType: resource
+  # vars:
+  #   system: String, GeneralUtils.getCodeableConceptSystem(valCodeableConcept4)
+  #   code: String, GeneralUtils.getCodeableConceptCode(valCodeableConcept4)
+  #   display: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConcept4)
+  constants:  
+    system: 'http://hl7.org/fhir/v3/Race'
+    code: '2106-3'
+    display: 'White'  
