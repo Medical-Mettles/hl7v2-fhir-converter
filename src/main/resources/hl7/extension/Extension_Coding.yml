@@ -1,0 +1,27 @@
+#
+# (C) Copyright IBM Corp. 2021
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+---
+# url:
+#   type: SYSTEM_URL
+#   valueOf: $url
+
+url_1:
+  # condition: $url NOT_NULL`
+  type: SYSTEM_URL
+  valueOf: $url  
+
+url_2:
+  # condition: $urlSubstitute NOT_NULL`
+  type: STRING
+  valueOf: $urlSubstitute
+
+valueCoding:
+  valueOf: datatype/Coding
+  expressionType: resource
+  vars:
+    system: String, GeneralUtils.getCodeableConceptSystem(valCodeableConcept)
+    code: String, GeneralUtils.getCodeableConceptCode(valCodeableConcept)
+    display: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConcept)

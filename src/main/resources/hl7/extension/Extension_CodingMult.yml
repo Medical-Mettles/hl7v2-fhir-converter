@@ -1,0 +1,57 @@
+#
+# (C) Copyright IBM Corp. 2021
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+---
+# url:
+#   type: SYSTEM_URL
+#   valueOf: $url
+
+# url_1:
+#   # condition: $url NOT_NULL`
+#   type: SYSTEM_URL
+#   valueOf: $url 
+ 
+
+url:
+  # condition: $urlSubstitute NOT_NULL`
+  type: STRING
+  valueOf: $urlSubstitute
+  constants: 
+    urlSubstitute: 'ombCategory'
+
+# can't get the variable from Codable concept    
+# valueCoding:
+#   valueOf: datatype/Coding
+#   expressionType: resource
+#   vars:
+#     system: String, GeneralUtils.getCodeableConceptSystem(valCodeableConcept)
+#     code: String, GeneralUtils.getCodeableConceptCode(valCodeableConcept)
+#     display: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConcept)
+#     valCodeableConcept: RACE_CATEGORIES_CC, CWE   
+
+# can't get the variable from Codable concept    
+# valueCoding:
+#   valueOf: extension/Extension_CodingMultInner
+#   expressionType: resource
+#   vars:
+#     valCodeableConcept: RACE_CATEGORIES_CC, CWE 
+#   constants: 
+#     system: "http://hl7.org/fhir/us/core/StructureDefinition/bjc-race"
+#     code: "code2"
+#     display: "display1"
+
+# can't get the variable from Codable concept    
+valueCoding:
+  valueOf: datatype/Coding
+  expressionType: resource
+  vars:
+    # system: String, GeneralUtils.getCodeableConceptSystem(valCodeableConcept)
+    # code: String, GeneralUtils.getCodeableConceptCode(valCodeableConcept)
+    # display: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConcept)
+    valCodeableConcept: RACE_CATEGORIES_CC, CWE   
+  constants:
+    system: "urn:oid:2.16.840.1.113883.6.238"
+    code: "2028-9"
+    display: "AsianX"  

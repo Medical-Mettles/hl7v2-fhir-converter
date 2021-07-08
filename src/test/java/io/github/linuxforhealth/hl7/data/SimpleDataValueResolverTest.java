@@ -21,6 +21,7 @@ import ca.uhn.hl7v2.model.v26.datatype.TX;
 import ca.uhn.hl7v2.model.v26.message.ORU_R01;
 import io.github.linuxforhealth.hl7.data.date.DateUtil;
 
+import org.hl7.fhir.r4.model.codesystems.V3Race;
 import org.hl7.fhir.r4.model.codesystems.V3ReligiousAffiliation;
 
 public class SimpleDataValueResolverTest {
@@ -144,6 +145,18 @@ public class SimpleDataValueResolverTest {
     assertThat(codeableConcept.getText()).isEqualTo(V3ReligiousAffiliation._1028.getDisplay());
     assertThat(coding.getDisplay()).isEqualTo(V3ReligiousAffiliation._1028.getDisplay());
     assertThat(coding.getSystem()).isEqualTo(V3ReligiousAffiliation._1028.getSystem());
+  }
+
+  @Test
+  public void get_race_value_valid() {
+    String gen = "2028-9";
+    CodeableConcept codeableConcept = SimpleDataValueResolver.RACE_CATEGORIES_FHIR_CC.apply(gen);
+    Coding coding = codeableConcept.getCodingFirstRep();
+    assertThat(codeableConcept.getText()).isEqualTo(V3Race._20289.getDisplay());
+    assertThat(codeableConcept.hasCoding()).isTrue();
+    assertThat(codeableConcept.getText()).isEqualTo(V3Race._20289.getDisplay());
+    assertThat(coding.getDisplay()).isEqualTo(V3Race._20289.getDisplay());
+    assertThat(coding.getSystem()).isEqualTo(V3Race._20289.getSystem());
   }
 
   @Test

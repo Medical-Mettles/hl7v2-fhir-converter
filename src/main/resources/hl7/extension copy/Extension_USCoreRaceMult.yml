@@ -1,0 +1,49 @@
+#
+# (C) Copyright IBM Corp. 2021
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+---
+url:
+  type: SYSTEM_URL
+  valueOf: $myUrl
+  constants: 
+    myUrl: "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"  
+
+
+# This works for one race
+# extension_3:
+#   condition: $valCodeableConcept NOT_NULL
+#   valueOf: extension/Extension_USCoreRace
+#   generateList: true
+#   expressionType: resource
+#   vars:
+#     url: String, GeneralUtils.getExtensionUrl("race")
+#     valCodeableConcept: RACE_CATEGORIES_CC, PID.10       
+
+# Duplicates entire structure for each race
+# extension_1:
+#   generateList: true
+#   valueOf: extension/Extension_Coding
+#   expressionType: resource
+#   vars:
+#     valCodeableConcept: RACE_CATEGORIES_CC, CWE  
+#   constants:
+#     urlSubstitute: 'ombCategory'
+
+extension_1:
+  valueOf: extension/Extension_CodingMult
+  expressionType: resource
+  generateList: true
+  specs: PID.10    
+
+extension_2:
+  generateList: true
+  valueOf: extension/Extension
+  expressionType: resource
+  # vars:
+  #   valString: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConcept)  
+  constants:
+    valString: "text valString"
+    urlSubstitute: "text"
+      

@@ -8,6 +8,7 @@ package io.github.linuxforhealth.hl7.segments;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.Patient;
 import org.junit.Rule;
@@ -42,6 +43,14 @@ public class FHIRExtensionsTest {
         assertThat(ext).isNotNull();
         CodeableConcept cc = (CodeableConcept) ext.getValue();
         assertThat(cc.getText()).hasToString("Lutheran");
+
+
+        ext = patient.getExtensionByUrl(UrlLookup.getExtensionUrl("race"));
+        assertThat(ext).isNotNull();
+        Extension subExt = (Extension) ext.getExtensionByUrl("ombCategory");
+        assertThat(subExt).isNotNull();
+        Coding coding = (Coding) subExt.getValue();
+        assertThat(coding.getDisplay()).hasToString("Asian");
 
         patient = PatientUtils.createPatientFromHl7Segment(patientWithNoExtensionData);
         assertThat(patient.hasExtension()).isFalse();

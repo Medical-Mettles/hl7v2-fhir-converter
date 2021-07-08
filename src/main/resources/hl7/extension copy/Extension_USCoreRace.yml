@@ -1,0 +1,29 @@
+#
+# (C) Copyright IBM Corp. 2021
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+---
+url:
+  type: SYSTEM_URL
+  valueOf: $url
+
+extension_1:
+  generateList: true
+  valueOf: extension/Extension_Coding
+  expressionType: resource
+  vars:
+    valCodeableConcept: $valCodeableConcept
+  constants:
+    urlSubstitute: 'ombCategory'
+
+extension_2:
+  generateList: true
+  valueOf: extension/Extension
+  expressionType: resource
+  vars:
+    valString: String, GeneralUtils.getCodeableConceptDisplay(valCodeableConcept)  
+  constants:
+    # valString: "text valString"
+    urlSubstitute: "text"
+      
