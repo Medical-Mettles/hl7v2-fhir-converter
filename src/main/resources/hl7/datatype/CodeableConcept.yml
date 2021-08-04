@@ -43,7 +43,7 @@ text:
    type: STRING
    valueOf: $displayText
    vars:
-      displayText: CWE.2 |CWE.9 |CE.2 |CNE.2| ST |TX |ID |IS | CWE.5| $coding:display
+      displayText: CWE.2 |CWE.9 |CE.2 |CNE.2| ST |TX |ID |IS | CWE.5| CWE.1 | $coding:display
 
 # ----------------
 # Orphan comments:

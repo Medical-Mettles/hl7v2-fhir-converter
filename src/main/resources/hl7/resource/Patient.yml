@@ -168,6 +168,8 @@ extension:
                coding: RELIGIOUS_AFFILIATION_CC, PID.17
    -  expressionType: resource
       valueOf: extension/ExtensionRace
+      specs: PID.10
+
 
 communication:
    condition: $language NOT_NULL
