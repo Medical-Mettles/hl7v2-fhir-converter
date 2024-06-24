@@ -72,7 +72,7 @@ identifier_2d:
   condition: $valueIn NOT_NULL && $subscriberValue EQUALS SEL
   valueOf: datatype/Identifier_var
   generateList: true
-  expressionType: resource  
+  expressionType: resource
   vars:
     valueIn: CLEAN_SSN, PID.19 | IN2.2 # subscriber SSN
     subscriberValue: String, IN1.17 # subscriber relationship
@@ -226,6 +226,20 @@ gender:
   type: ADMINISTRATIVE_GENDER
   valueOf: PID.8
   expressionType: HL7Spec
+
+_gender:
+  expressionType: nested
+  expressionsMap:
+    extension_1:
+      generateList: true
+      expressionType: nested
+      expressionsMap:
+        url:
+          type: STRING
+          value: "gender-extension"
+        valueBoolean:
+          type: STRING
+          valueOf: "true"
 
 address:
   valueOf: datatype/Address

@@ -16,6 +16,7 @@ public enum SimpleDataTypeMapper {
   STRING_ALL(SimpleDataValueResolver.STRING_ALL),
   VALID_ID(SimpleDataValueResolver.VALID_ID),
   FLOAT(SimpleDataValueResolver.FLOAT),
+  BIG_DECIMAL(SimpleDataValueResolver.BIG_DECIMAL),
   BASE64_BINARY(SimpleDataValueResolver.BASE64_BINARY),
 
   URI(SimpleDataValueResolver.URI_VAL),
@@ -74,6 +75,7 @@ public enum SimpleDataTypeMapper {
   FIND_EDUCATION_PRESENTATION_DATE(SimpleDataValueResolver.FIND_EDUCATION_PRESENTATION_DATE),
   FIND_EDUCATION_DOCUMENT_TYPE_TEXT(SimpleDataValueResolver.FIND_EDUCATION_DOCUMENT_TYPE_TEXT),
   FIND_EDUCATION_REFERENCE_TEXT(SimpleDataValueResolver.FIND_EDUCATION_REFERENCE_TEXT),
+  CLEAN_SSN(SimpleDataValueResolver.CLEAN_SSN),
   ENCOUNTER_MODE_ARRIVAL_DISPLAY(SimpleDataValueResolver.ENCOUNTER_MODE_ARRIVAL_DISPLAY);
 
   private ValueExtractor<Object, ?> valueResolver;

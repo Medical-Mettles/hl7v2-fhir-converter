@@ -7,6 +7,7 @@ package io.github.linuxforhealth.hl7.data;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
@@ -60,6 +61,25 @@ class SimpleDataValueResolverTest {
     }
 
     @Test
+    void get_clean_ssn() {
+        // Check dashes are removed
+        String ssn = "777-88-9999";
+        assertThat(SimpleDataValueResolver.CLEAN_SSN.apply(ssn)).isEqualTo("777889999");
+
+        // Check no dashes remains the same
+        ssn = "777889999";
+        assertThat(SimpleDataValueResolver.CLEAN_SSN.apply(ssn)).isEqualTo("777889999");
+
+        // Check that empty input returns empty (and doesn't crash)
+        ssn = "";
+        assertThat(SimpleDataValueResolver.CLEAN_SSN.apply(ssn)).isEqualTo("");
+
+        // Check that null input returns null (and doesn't crash)
+        ssn = null;
+        assertThat(SimpleDataValueResolver.CLEAN_SSN.apply(ssn)).isEqualTo(null);
+    }
+
+    @Test
     void get_boolean_value_true() {
         String gen = "True";
         assertThat(SimpleDataValueResolver.BOOLEAN.apply(gen)).isTrue();
@@ -85,14 +105,37 @@ class SimpleDataValueResolverTest {
     }
 
     @Test
+    void get_big_decimal_value_valid() {
+        String gen = "123";
+        assertThat(SimpleDataValueResolver.BIG_DECIMAL.apply(gen)).isEqualTo(new BigDecimal(gen));
+    }
+
+    @Test
+    void get_big_decimal_value_valid_with_bigger_than_float_decimal() {
+        String gen = "1769.859285";
+        assertThat(SimpleDataValueResolver.BIG_DECIMAL.apply(gen)).isEqualTo(new BigDecimal(gen));
+    }
+
+    @Test
     void get_float_value_null() {
         assertThat(SimpleDataValueResolver.FLOAT.apply(null)).isNull();
+    }
+
+    @Test
+    void get_big_decimal_value_null() {
+        assertThat(SimpleDataValueResolver.BIG_DECIMAL.apply(null)).isNull();
     }
 
     @Test
     void get_float_value_invalid() {
         String gen = "abc";
         assertThat(SimpleDataValueResolver.FLOAT.apply(gen)).isNull();
+    }
+
+    @Test
+    void get_big_decimal_value_invalid() {
+        String gen = "abc";
+        assertThat(SimpleDataValueResolver.BIG_DECIMAL.apply(gen)).isNull();
     }
 
     @Test
